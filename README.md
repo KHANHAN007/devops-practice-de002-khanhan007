@@ -17,8 +17,20 @@ sudo find /var/www/devops-practice-de002-khanhan007 -type d -exec chmod 755 {} \
 
 sudo find /var/www/devops-practice-de002-khanhan007 -type f -exec chmod 644 {} \;
 ```
+## 3. Cấu hìn Nginx và UFW
 
-## 3. Kiểm thử
+```bash
+sudo cp nginx/khanhan-lab.conf /etc/nginx/sites-available/khanhan-lab.conf
+sudo ln -s /etc/nginx/sites-available/khanhan-lab.conf /etc/nginx/sites-enabled/khanhan-lab.conf
+sudo nginx -t
+sudo systemctl reload nginx
+
+sudo ufw allow 22/tcp
+sudo ufw allow 8091/tcp
+sudo ufw status verbose
+```
+
+## 4. Kiểm thử
 
 ```bash
 sudo nginx -t
